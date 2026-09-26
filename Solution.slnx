@@ -1,6 +1,8 @@
 <Solution>
   <Folder Name="/docs/" />
   <Folder Name="/eng/" />
-  <Folder Name="/src/" />
+  <Folder Name="/src/">
+    <Project Path="src\PostgreSQL\Escendit.Orleans.Migrations.Cluster.PostgreSQL.csproj" />
+  </Folder>
   <Folder Name="/test/" />
 </Solution>

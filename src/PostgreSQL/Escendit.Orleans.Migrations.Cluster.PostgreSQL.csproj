@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>Escendit.Orleans.Migrations.Cluster.PostgreSQL provides FluentMigrator migrations for the Microsoft Orleans ADO.NET PostgreSQL cluster schema (grain persistence, clustering, and reminders).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator"/>
+    <PackageReference Include="FluentMigrator.Extensions.Postgres"/>
+    <PackageReference Include="FluentMigrator.Runner.Postgres"/>
+    <PackageReference Include="Microsoft.Extensions.Hosting"/>
+    <PackageReference Include="Npgsql"/>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\*.sql"/>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt"/>
+    <AdditionalFiles Include="PublicAPI.Shipped.txt"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md">
+      <Pack>true</Pack>
+      <PackagePath/>
+    </None>
+  </ItemGroup>
+</Project>

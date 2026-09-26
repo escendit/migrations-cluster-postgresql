@@ -1,0 +1,2 @@
+ALTER TABLE OrleansRemindersTable
+    ALTER COLUMN StartTime TYPE TIMESTAMPTZ(3) USING StartTime AT TIME ZONE 'UTC';

@@ -1,0 +1,5 @@
+ALTER TABLE OrleansMembershipTable
+    ALTER COLUMN StartTime TYPE TIMESTAMPTZ(3) 
+        USING StartTime AT TIME ZONE 'UTC',
+    ALTER COLUMN IAmAliveTime TYPE TIMESTAMPTZ(3)
+        USING IAmAliveTime AT TIME ZONE 'UTC';
