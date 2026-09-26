@@ -65,6 +65,36 @@ using var scope = host.Services.CreateScope();
 scope.ServiceProvider.GetRequiredService<IMigrationRunner>().MigrateUp();
 ```
 
+## Schema Version
+
+The schema produced by the migrations matches the PostgreSQL scripts of **Orleans v10.3.1**
+(`src/AdoNet/Shared/PostgreSQL-Main.sql`, `Orleans.Clustering.AdoNet/PostgreSQL-Clustering.sql`,
+`Orleans.Persistence.AdoNet/PostgreSQL-Persistence.sql`, `Orleans.Reminders.AdoNet/PostgreSQL-Reminders.sql` and their
+`Migrations/` upgrade scripts up to Clustering 3.7.0). Every `OrleansQuery` key and query text is identical to v10.3.1.
+
+Catch-up migrations added on top of the original 2023 migrations:
+
+| Migration | Change |
+|---|---|
+| `M20260926120000CreateClusteringFunctions` | Adds `update_i_am_alive_time`, `insert_membership_version`, `insert_membership`, `update_membership`. |
+| `M20260926120100CreateRemindersFunctions` | Adds `upsert_reminder_row`, `delete_reminder_row`. |
+| `M20260926120200UpdateOrleansQueryClusteringKeys` | Upserts the clustering `OrleansQuery` rows to the v10.3.1 texts (calling the snake_case functions). |
+| `M20260926120300UpdateOrleansQueryRemindersKeys` | Upserts the reminders `OrleansQuery` rows to the v10.3.1 texts. |
+| `M20260926120400UpdateOrleansQueryPersistenceKeys` | Upserts the persistence `OrleansQuery` rows to the v10.3.1 texts. |
+| `M20260926120500InsertIntoOrleansQueryDeleteStorageKey` | Adds `DeleteStorageKey`, required when grain storage uses `DeleteStateOnClear`. |
+| `M20260926120600RenameConstraintsToOrleansNames` | Renames primary and foreign key constraints to the Orleans names. |
+
+Intentional differences from the v10.3.1 *fresh-install* scripts:
+
+- `OrleansStorage.modifiedon` is `timestamptz` and `writetostorage` uses the definition from
+  `PostgreSQL-Persistence-3.6.0.sql`, i.e. the v10.3.1 upgrade path. The fresh-install script still declares
+  `timestamp without time zone`; this was aligned upstream after v10.3.1.
+- The CamelCase functions created by the original migrations (`UpdateIAmAliveTime`, `InsertMembershipVersion`,
+  `InsertMembership`, `UpdateMembership`, `UpsertReminderRow`, `DeleteReminderRow`) are kept, so silos that cached the old
+  query texts keep working during a rolling upgrade. They can be dropped in a later migration.
+
+Not included: the Orleans ADO.NET **GrainDirectory** and **Streaming** scripts.
+
 ## Scripts & Commands
 
 - **Build:** `dotnet build`

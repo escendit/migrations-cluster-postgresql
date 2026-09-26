@@ -76,6 +76,20 @@ Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230509212012InsertI
 Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230509212012InsertIntoOrleansQueryCleanupDefunctSiloEntriesKey.M20230509212012InsertIntoOrleansQueryCleanupDefunctSiloEntriesKey() -> void
 Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230510224234AlterTableOrleansMembershipTableModifyPrimaryKey
 Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230510224234AlterTableOrleansMembershipTableModifyPrimaryKey.M20230510224234AlterTableOrleansMembershipTableModifyPrimaryKey() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120000CreateClusteringFunctions
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120000CreateClusteringFunctions.M20260926120000CreateClusteringFunctions() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120100CreateRemindersFunctions
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120100CreateRemindersFunctions.M20260926120100CreateRemindersFunctions() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120200UpdateOrleansQueryClusteringKeys
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120200UpdateOrleansQueryClusteringKeys.M20260926120200UpdateOrleansQueryClusteringKeys() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120300UpdateOrleansQueryRemindersKeys
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120300UpdateOrleansQueryRemindersKeys.M20260926120300UpdateOrleansQueryRemindersKeys() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120400UpdateOrleansQueryPersistenceKeys
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120400UpdateOrleansQueryPersistenceKeys.M20260926120400UpdateOrleansQueryPersistenceKeys() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120500InsertIntoOrleansQueryDeleteStorageKey
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120500InsertIntoOrleansQueryDeleteStorageKey.M20260926120500InsertIntoOrleansQueryDeleteStorageKey() -> void
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120600RenameConstraintsToOrleansNames
+Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120600RenameConstraintsToOrleansNames.M20260926120600RenameConstraintsToOrleansNames() -> void
 Microsoft.Extensions.Hosting.HostApplicationBuilderExtensions
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504223344CreateTableOrleansQuery.Down() -> void
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504223344CreateTableOrleansQuery.Up() -> void
@@ -155,4 +169,18 @@ override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M202305092120
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230509212012InsertIntoOrleansQueryCleanupDefunctSiloEntriesKey.Up() -> void
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230510224234AlterTableOrleansMembershipTableModifyPrimaryKey.Down() -> void
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230510224234AlterTableOrleansMembershipTableModifyPrimaryKey.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120000CreateClusteringFunctions.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120000CreateClusteringFunctions.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120100CreateRemindersFunctions.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120100CreateRemindersFunctions.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120200UpdateOrleansQueryClusteringKeys.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120200UpdateOrleansQueryClusteringKeys.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120300UpdateOrleansQueryRemindersKeys.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120300UpdateOrleansQueryRemindersKeys.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120400UpdateOrleansQueryPersistenceKeys.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120400UpdateOrleansQueryPersistenceKeys.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120500InsertIntoOrleansQueryDeleteStorageKey.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120500InsertIntoOrleansQueryDeleteStorageKey.Up() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120600RenameConstraintsToOrleansNames.Down() -> void
+override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120600RenameConstraintsToOrleansNames.Up() -> void
 static Microsoft.Extensions.Hosting.HostApplicationBuilderExtensions.AddClusterMigrationRunner(this Microsoft.Extensions.Hosting.HostApplicationBuilder! builder) -> Microsoft.Extensions.Hosting.HostApplicationBuilder!
