@@ -28,10 +28,12 @@ Orleans ADO.NET providers read their SQL from.
 - **Framework:** .NET 10
 - **Package Manager:** NuGet with Central Package Management (CPM)
 - **Key Libraries:** FluentMigrator, Npgsql
+- **Testing:** xUnit v3, Testcontainers
 
 ## Project Structure
 
 - `src/PostgreSQL`: FluentMigrator migrations and embedded SQL scripts for the Orleans PostgreSQL cluster schema.
+- `test/PostgreSQL.Tests`: Unit tests for the registration API and integration tests that run the migrations against PostgreSQL in a container.
 
 ## Getting Started
 
@@ -98,7 +100,7 @@ Not included: the Orleans ADO.NET **GrainDirectory** and **Streaming** scripts.
 ## Scripts & Commands
 
 - **Build:** `dotnet build`
-- **Test:** `dotnet test` (TODO: Add tests to the project)
+- **Test:** `dotnet test` (requires Docker, or Podman with `DOCKER_HOST` pointing at its socket and `TESTCONTAINERS_RYUK_DISABLED=true`)
 - **Pack:** `dotnet pack`
 
 ## Configuration

@@ -4,5 +4,7 @@
   <Folder Name="/src/">
     <Project Path="src\PostgreSQL\Escendit.Orleans.Migrations.Cluster.PostgreSQL.csproj" />
   </Folder>
-  <Folder Name="/test/" />
+  <Folder Name="/test/">
+    <Project Path="test\PostgreSQL.Tests\Escendit.Orleans.Migrations.Cluster.PostgreSQL.Tests.csproj" />
+  </Folder>
 </Solution>
