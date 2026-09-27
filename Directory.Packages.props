@@ -17,7 +17,7 @@
     <PackageVersion Include="Microsoft.Orleans.Reminders.AdoNet" Version="$(OrleansVersion)"/>
     <PackageVersion Include="Microsoft.Orleans.Server" Version="$(OrleansVersion)"/>
     <PackageVersion Include="Npgsql" Version="10.0.3"/>
-    <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0"/>
+    <PackageVersion Include="Roslynator.Analyzers" Version="4.16.1"/>
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.25.0.139117"/>
     <PackageVersion Include="Testcontainers.PostgreSql" Version="4.15.0"/>
     <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.0"/>
