@@ -10,7 +10,7 @@
 builder.AddClusterMigrationRunner();
 ```
 
-This registers the FluentMigrator runner for PostgreSQL, using the `cluster` connection string and the migrations and embedded SQL scripts in this assembly. Resolve `IMigrationRunner` and call `MigrateUp()` to apply pending migrations.
+This registers the FluentMigrator runner for PostgreSQL, using the `orleans` connection string and the migrations and embedded SQL scripts in this assembly. Resolve `IMigrationRunner` and call `MigrateUp()` to apply pending migrations.
 
 For CLI tools or other hosts without a `HostApplicationBuilder`, register the runner on an `IServiceCollection` with an explicit connection string:
 

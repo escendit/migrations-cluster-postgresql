@@ -31,5 +31,5 @@ public static class HostApplicationBuilderExtensions
         }
     }
 
-    private const string DefaultConnectionStringName = "cluster";
+    private const string DefaultConnectionStringName = "orleans";
 }

@@ -57,7 +57,7 @@ using Microsoft.Extensions.Hosting;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-// Reads the "cluster" connection string.
+// Reads the "orleans" connection string.
 builder.AddClusterMigrationRunner();
 
 using var host = builder.Build();
@@ -103,7 +103,7 @@ Not included: the Orleans ADO.NET **GrainDirectory** and **Streaming** scripts.
 
 ## Configuration
 
-- `ConnectionStrings:cluster`: PostgreSQL connection string used by the migration runner.
+- `ConnectionStrings:orleans`: PostgreSQL connection string used by the migration runner.
 
 ## License
 
