@@ -97,6 +97,17 @@ Intentional differences from the v10.3.1 *fresh-install* scripts:
 
 Not included: the Orleans ADO.NET **GrainDirectory** and **Streaming** scripts.
 
+## Versioning
+
+Package versions follow the Orleans release the schema matches, set by `OrleansVersion` in `Directory.Build.props`:
+
+- `10.3.1`: the schema matches Orleans v10.3.1.
+- `10.3.1.1`, `10.3.1.2`, …: fixes to this package that don't change the Orleans version.
+- `10.3.1-rc.0`, `10.3.1.1-rc.0`, …: pre-releases of the next version.
+
+Release Drafter computes the next version from `OrleansVersion` and the published releases. To follow a new Orleans
+release, add the catch-up migrations and bump `OrleansVersion`.
+
 ## Scripts & Commands
 
 - **Build:** `dotnet build`

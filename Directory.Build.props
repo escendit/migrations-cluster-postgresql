@@ -5,6 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <!-- Versioning -->
+  <PropertyGroup>
+    <!-- Orleans release the schema matches; releases are tagged vX.Y.Z, then vX.Y.Z.N for package-only fixes -->
+    <OrleansVersion>10.3.1</OrleansVersion>
+  </PropertyGroup>
   <!-- SourceLink -->
   <PropertyGroup>
     <RepositoryType>git</RepositoryType>
