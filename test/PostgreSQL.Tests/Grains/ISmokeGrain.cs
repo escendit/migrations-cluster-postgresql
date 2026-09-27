@@ -28,6 +28,12 @@ public interface ISmokeGrain : IGrainWithStringKey
     Task ClearValueAsync();
 
     /// <summary>
+    /// Get the identity of the current activation.
+    /// </summary>
+    /// <returns>The activation identity.</returns>
+    Task<string> GetActivationIdAsync();
+
+    /// <summary>
     /// Deactivate the grain, so the next call reads its state from storage.
     /// </summary>
     /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>

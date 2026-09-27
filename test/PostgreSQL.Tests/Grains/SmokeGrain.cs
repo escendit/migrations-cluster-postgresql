@@ -27,6 +27,9 @@ public sealed class SmokeGrain(
     public Task ClearValueAsync() => state.ClearStateAsync();
 
     /// <inheritdoc />
+    public Task<string> GetActivationIdAsync() => Task.FromResult(GrainContext.ActivationId.ToString());
+
+    /// <inheritdoc />
     public Task DeactivateAsync()
     {
         DeactivateOnIdle();

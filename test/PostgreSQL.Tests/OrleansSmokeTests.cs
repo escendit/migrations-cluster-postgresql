@@ -56,15 +56,20 @@ public class OrleansSmokeTests(PostgreSqlFixture fixture)
         var grain = host.Services.GetRequiredService<IGrainFactory>().GetGrain<ISmokeGrain>("storage");
 
         await grain.SetValueAsync("hello");
+        var writer = await grain.GetActivationIdAsync();
         await grain.DeactivateAsync();
 
+        // A new activation only has the value if it loaded it from PostgreSQL.
         Assert.Equal("hello", await grain.GetValueAsync());
+        var reader = await grain.GetActivationIdAsync();
+        Assert.NotEqual(writer, reader);
         Assert.Equal(1, await Database.CountStorageRowsAsync(connectionString));
 
         await grain.ClearValueAsync();
         await grain.DeactivateAsync();
 
         Assert.Null(await grain.GetValueAsync());
+        Assert.NotEqual(reader, await grain.GetActivationIdAsync());
         Assert.Equal(0, await Database.CountStorageRowsAsync(connectionString));
 
         await host.StopAsync(TestContext.Current.CancellationToken);
@@ -97,6 +102,7 @@ public class OrleansSmokeTests(PostgreSqlFixture fixture)
 
     private static IHost BuildSilo(string connectionString)
     {
+        var (siloPort, gatewayPort) = GetFreePorts();
         var builder = Host.CreateApplicationBuilder();
         builder.UseOrleans(silo => silo
             .Configure<ClusterOptions>(options =>
@@ -104,7 +110,7 @@ public class OrleansSmokeTests(PostgreSqlFixture fixture)
                 options.ClusterId = "smoke";
                 options.ServiceId = "smoke";
             })
-            .ConfigureEndpoints(IPAddress.Loopback, GetFreePort(), GetFreePort())
+            .ConfigureEndpoints(IPAddress.Loopback, siloPort, gatewayPort)
             .UseAdoNetClustering(options =>
             {
                 options.Invariant = Invariant;
@@ -124,11 +130,14 @@ public class OrleansSmokeTests(PostgreSqlFixture fixture)
         return builder.Build();
     }
 
-    private static int GetFreePort()
+    // Both listeners stay open until both ports are known, so the two ports are always distinct.
+    private static (int SiloPort, int GatewayPort) GetFreePorts()
     {
-        using var listener = new TcpListener(IPAddress.Loopback, 0);
-        listener.Start();
-        return ((IPEndPoint)listener.LocalEndpoint).Port;
+        using var silo = new TcpListener(IPAddress.Loopback, 0);
+        using var gateway = new TcpListener(IPAddress.Loopback, 0);
+        silo.Start();
+        gateway.Start();
+        return (((IPEndPoint)silo.LocalEndpoint).Port, ((IPEndPoint)gateway.LocalEndpoint).Port);
     }
 
     private async Task<string> MigrateAsync()
