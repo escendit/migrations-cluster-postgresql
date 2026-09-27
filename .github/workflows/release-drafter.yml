@@ -18,8 +18,57 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' && github.ref_type != 'tag' }}
 
 jobs:
+  version:
+    name: "Resolve Version"
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.version.outputs.release }}
+      prerelease: ${{ steps.version.outputs.prerelease }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      # Follow Orleans versioning: vX.Y.Z for the Orleans release the schema matches,
+      # vX.Y.Z.N for package-only fixes, and vX.Y.Z[.N]-rc.K for pre-releases.
+      - name: Resolve version from OrleansVersion
+        id: version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          ORLEANS=$(sed -n 's:.*<OrleansVersion>\(.*\)</OrleansVersion>.*:\1:p' Directory.Build.props)
+          if [ -z "${ORLEANS}" ]; then
+            echo "::error::OrleansVersion is not set in Directory.Build.props"
+            exit 1
+          fi
+
+          TAGS=$(gh api "repos/${REPOSITORY}/releases" --paginate --jq '.[] | select(.draft == false) | .tag_name')
+
+          ESCAPED=${ORLEANS//./\\.}
+          REVISION=$( (grep -E "^v${ESCAPED}(\.[0-9]+)?$" <<< "${TAGS}" || true) \
+            | sed -E "s/^v${ESCAPED}\.?//; s/^$/0/" | sort -n | tail -1)
+          if [ -z "${REVISION}" ]; then
+            RELEASE="${ORLEANS}"
+          else
+            RELEASE="${ORLEANS}.$((REVISION + 1))"
+          fi
+
+          ESCAPED=${RELEASE//./\\.}
+          RC=$( (grep -E "^v${ESCAPED}-rc\.[0-9]+$" <<< "${TAGS}" || true) \
+            | sed -E 's/.*-rc\.//' | sort -n | tail -1)
+          PRERELEASE="${RELEASE}-rc.$(( ${RC:--1} + 1 ))"
+
+          echo "Orleans ${ORLEANS}: release v${RELEASE}, pre-release v${PRERELEASE}"
+          echo "release=${RELEASE}" >> "$GITHUB_OUTPUT"
+          echo "prerelease=${PRERELEASE}" >> "$GITHUB_OUTPUT"
+
   update_prerelease_draft:
     name: "Update Pre-Release Draft"
+    needs: version
     permissions:
       contents: write
       pull-requests: write
@@ -30,10 +79,13 @@ jobs:
         with:
           prerelease: true
           prerelease-identifier: rc
+          tag: v${{ needs.version.outputs.prerelease }}
+          name: v${{ needs.version.outputs.prerelease }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update_release_draft:
     name: "Update Release Draft"
+    needs: version
     permissions:
       contents: write
       pull-requests: write
@@ -44,5 +96,7 @@ jobs:
         with:
           prerelease: false
           prerelease-identifier: ''
+          tag: v${{ needs.version.outputs.release }}
+          name: v${{ needs.version.outputs.release }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
