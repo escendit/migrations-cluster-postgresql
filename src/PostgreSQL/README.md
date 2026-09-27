@@ -12,6 +12,12 @@ builder.AddClusterMigrationRunner();
 
 This registers the FluentMigrator runner for PostgreSQL, using the `cluster` connection string and the migrations and embedded SQL scripts in this assembly. Resolve `IMigrationRunner` and call `MigrateUp()` to apply pending migrations.
 
+For CLI tools or other hosts without a `HostApplicationBuilder`, register the runner on an `IServiceCollection` with an explicit connection string:
+
+```csharp
+services.AddClusterMigrationRunner(connectionString);
+```
+
 ## Schema Version
 
 The schema matches the Orleans **v10.3.1** ADO.NET PostgreSQL scripts for storage, clustering, and reminders. The GrainDirectory and Streaming scripts are not included. See the repository README for the list of catch-up migrations.

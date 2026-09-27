@@ -1,4 +1,4 @@
-Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504223344CreateTableOrleansQuery
+﻿Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504223344CreateTableOrleansQuery
 Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504223344CreateTableOrleansQuery.M20230504223344CreateTableOrleansQuery() -> void
 Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504224501CreateTableOrleansStorage
 Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20230504224501CreateTableOrleansStorage.M20230504224501CreateTableOrleansStorage() -> void
@@ -183,4 +183,20 @@ override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M202609261205
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120500InsertIntoOrleansQueryDeleteStorageKey.Up() -> void
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120600RenameConstraintsToOrleansNames.Down() -> void
 override Escendit.Orleans.Migrations.Cluster.PostgreSQL.Migrations.M20260926120600RenameConstraintsToOrleansNames.Up() -> void
-static Microsoft.Extensions.Hosting.HostApplicationBuilderExtensions.AddClusterMigrationRunner(this Microsoft.Extensions.Hosting.HostApplicationBuilder! builder) -> Microsoft.Extensions.Hosting.HostApplicationBuilder!
+Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.AppliedOnColumnName.get -> string!
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.ColumnName.get -> string!
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.CreateWithPrimaryKey.get -> bool
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.DescriptionColumnName.get -> string!
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.OrleansVersionTableMetadata() -> void
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.OwnsSchema.get -> bool
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.SchemaName.get -> string!
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.TableName.get -> string!
+Microsoft.Extensions.DependencyInjection.OrleansVersionTableMetadata.UniqueIndexName.get -> string!
+Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.extension<TServices>(TServices).AddClusterMigrationRunner(string! connectionString) -> TServices
+static Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddClusterMigrationRunner<TServices>(this TServices services, string! connectionString) -> TServices
+Microsoft.Extensions.Hosting.HostApplicationBuilderExtensions.extension<TBuilder>(TBuilder).AddClusterMigrationRunner() -> TBuilder
+static Microsoft.Extensions.Hosting.HostApplicationBuilderExtensions.AddClusterMigrationRunner<TBuilder>(this TBuilder builder) -> TBuilder
+Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.extension<TServices>(TServices)
+Microsoft.Extensions.Hosting.HostApplicationBuilderExtensions.extension<TBuilder>(TBuilder)

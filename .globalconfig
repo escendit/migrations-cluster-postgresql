@@ -3,6 +3,9 @@
 is_global = true
 global_level = 0
 
+# IDE
+dotnet_diagnostic.IDE0130.severity = none
+
 # .NET
 dotnet_diagnostic.CA1034.severity = none
 
