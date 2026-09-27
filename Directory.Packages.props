@@ -1,16 +1,22 @@
 <Project>
   <ItemGroup>
+    <PackageVersion Include="coverlet.collector" Version="10.0.1"/>
     <PackageVersion Include="Escendit.Tools.Branding" Version="2.0.0"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.NetAnalyzers" Version="0.6.0"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.StyleCopAnalyzers" Version="0.6.0"/>
     <PackageVersion Include="FluentMigrator" Version="8.0.1"/>
     <PackageVersion Include="FluentMigrator.Extensions.Postgres" Version="8.0.1"/>
     <PackageVersion Include="FluentMigrator.Runner.Postgres" Version="8.0.1"/>
+    <PackageVersion Include="JunitXml.TestLogger" Version="8.0.0"/>
     <PackageVersion Include="Meziantou.Analyzer" Version="3.0.63"/>
     <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.0.0-1.25277.114"/>
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.12"/>
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1"/>
     <PackageVersion Include="Npgsql" Version="10.0.3"/>
     <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0"/>
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.25.0.139117"/>
+    <PackageVersion Include="Testcontainers.PostgreSql" Version="4.15.0"/>
+    <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.0"/>
+    <PackageVersion Include="xunit.v3.mtp-off" Version="4.0.1"/>
   </ItemGroup>
 </Project>
