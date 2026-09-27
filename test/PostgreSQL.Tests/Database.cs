@@ -73,6 +73,39 @@ internal static class Database
         return [.. versions.Select(long.Parse)];
     }
 
+    /// <summary>
+    /// Get the status of the only silo in the membership table.
+    /// </summary>
+    /// <param name="connectionString">The connection string.</param>
+    /// <returns>The silo status.</returns>
+    public static async Task<global::Orleans.Runtime.SiloStatus> GetSiloStatusAsync(string connectionString) =>
+        (global::Orleans.Runtime.SiloStatus)await ScalarAsync<int>(connectionString, "SELECT status FROM orleansmembershiptable;");
+
+    /// <summary>
+    /// Count the rows in the grain storage table.
+    /// </summary>
+    /// <param name="connectionString">The connection string.</param>
+    /// <returns>The row count.</returns>
+    public static Task<long> CountStorageRowsAsync(string connectionString) =>
+        ScalarAsync<long>(connectionString, "SELECT count(*) FROM orleansstorage;");
+
+    /// <summary>
+    /// Count the rows in the reminders table.
+    /// </summary>
+    /// <param name="connectionString">The connection string.</param>
+    /// <returns>The row count.</returns>
+    public static Task<long> CountReminderRowsAsync(string connectionString) =>
+        ScalarAsync<long>(connectionString, "SELECT count(*) FROM orleansreminderstable;");
+
+    private static async Task<T> ScalarAsync<T>(string connectionString, string sql)
+    {
+        await using var connection = new NpgsqlConnection(connectionString);
+        await connection.OpenAsync(TestContext.Current.CancellationToken);
+        await using var command = new NpgsqlCommand(sql, connection);
+        var result = await command.ExecuteScalarAsync(TestContext.Current.CancellationToken);
+        return Assert.IsType<T>(result);
+    }
+
     private static async Task<IReadOnlyList<string>> QueryAsync(string connectionString, string sql)
     {
         await using var connection = new NpgsqlConnection(connectionString);
