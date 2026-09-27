@@ -23,7 +23,7 @@ public class M20230509202345AlterTableOrleansMembershipVersionTable : Migration
     {
         Alter
             .Column("timestamp")
-            .OnTable("orleansreminderstable")
+            .OnTable("orleansmembershipversiontable")
             .InSchema("public")
             .AsCustom("timestamptz(3)");
     }

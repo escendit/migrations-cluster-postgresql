@@ -45,6 +45,6 @@ public class M20230508211801InsertIntoOrleansQueryReadReminderRowKey : Migration
         Delete
             .FromTable("orleansquery")
             .InSchema("public")
-            .Row(new { querykey = "ReadReminderRowsKey" });
+            .Row(new { querykey = "ReadReminderRowKey" });
     }
 }

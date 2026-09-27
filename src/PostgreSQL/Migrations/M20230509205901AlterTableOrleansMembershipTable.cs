@@ -22,7 +22,7 @@ public class M20230509205901AlterTableOrleansMembershipTable : Migration
     public override void Down()
     {
         Alter
-            .Table("orleansreminderstable")
+            .Table("orleansmembershiptable")
             .InSchema("public")
             .AlterColumn("starttime")
             .AsCustom("timestamptz(3)")
