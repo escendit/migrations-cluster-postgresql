@@ -12,6 +12,10 @@
     <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.0.0-1.25277.114"/>
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.12"/>
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1"/>
+    <PackageVersion Include="Microsoft.Orleans.Clustering.AdoNet" Version="$(OrleansVersion)"/>
+    <PackageVersion Include="Microsoft.Orleans.Persistence.AdoNet" Version="$(OrleansVersion)"/>
+    <PackageVersion Include="Microsoft.Orleans.Reminders.AdoNet" Version="$(OrleansVersion)"/>
+    <PackageVersion Include="Microsoft.Orleans.Server" Version="$(OrleansVersion)"/>
     <PackageVersion Include="Npgsql" Version="10.0.3"/>
     <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0"/>
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.25.0.139117"/>
