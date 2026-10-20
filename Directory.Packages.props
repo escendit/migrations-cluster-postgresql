@@ -1,6 +1,6 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="coverlet.collector" Version="10.0.1"/>
+    <PackageVersion Include="coverlet.collector" Version="10.1.0"/>
     <PackageVersion Include="Escendit.Tools.Branding" Version="2.0.0"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.NetAnalyzers" Version="0.6.0"/>
     <PackageVersion Include="Escendit.Tools.CodeAnalysis.StyleCopAnalyzers" Version="0.6.0"/>
